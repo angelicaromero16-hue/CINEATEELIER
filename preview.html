@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cineatelier | Cinema & Cuisine</title>
+<style>
+:root {
+  --pink: #efb6b5;
+  --rose: #f6cfca;
+  --red: #ed3659;
+  --yellow: #fff15c;
+  --brown: #49251f;
+  --cream: #fff7e9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: Georgia, "Times New Roman", serif;
+}
+header {
+  background: var(--pink);
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-family: Arial, sans-serif;
+  color: var(--red);
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 23px;
+}
+nav { display:flex; gap:20px; flex-wrap:wrap; }
+nav a {
+  text-decoration:none;
+  color:var(--brown);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+nav a:hover { color:var(--red); }
+.hero {
+  background: var(--pink);
+  min-height: 600px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:45px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.eyebrow {
+  color:var(--red);
+  font: bold 11px Arial,sans-serif;
+  letter-spacing:3px;
+}
+.hotel {
+  font-size:clamp(48px,10vw,112px);
+  line-height:.95;
+  color:var(--red);
+  font-weight:bold;
+  margin:25px 0 0;
+  text-shadow:2px 2px #f9d2c8;
+}
+.subtitle {
+  font: bold 13px Arial,sans-serif;
+  letter-spacing:5px;
+  color:var(--red);
+}
+.hero h2 {
+  color:var(--yellow);
+  font:bold clamp(45px,9vw,105px) Arial,sans-serif;
+  letter-spacing:-5px;
+  margin:22px 0 8px;
+}
+.hero p { color:white; letter-spacing:3px; }
+.btn {
+  display:inline-block;
+  padding:14px 22px;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  font: bold 11px Arial,sans-serif;
+  letter-spacing:2px;
+  margin-top:15px;
+}
+.btn.yellow { background:var(--yellow); color:var(--brown); }
+section { padding:70px 7%; }
+.section-title { text-align:center; margin-bottom:35px; }
+.section-title small {
+  color:var(--red);
+  letter-spacing:3px;
+  font: bold 10px Arial,sans-serif;
+}
+.section-title h2 {
+  font-size:clamp(30px,5vw,48px);
+  margin:10px 0;
+}
+.intro {
+  background:#f7d7cf;
+  text-align:center;
+}
+.intro p { max-width:600px; margin:15px auto; line-height:1.8; }
+.menu {
+  background:#d9827d;
+  color:white;
+}
+.menu-grid, .products {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:35px;
+}
+.menu h3 { color:#fff0a5; font-size:25px; }
+.menu-item {
+  border-bottom:1px dotted #f7d7cf;
+  padding:12px 0;
+}
+.menu-item strong { display:flex; justify-content:space-between; gap:10px; }
+.menu-item p { font-size:13px; line-height:1.5; }
+.shop { background:#fff7e9; }
+.product {
+  background:white;
+  padding:15px;
+  box-shadow:0 8px 25px #49251f10;
+}
+.product img {
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:var(--rose);
+}
+.product h3 { font-size:22px; margin:15px 0 8px; }
+.product p { font-size:14px; line-height:1.6; }
+.price { font: bold 19px Arial,sans-serif; color:var(--red); }
+.old-price { color:#999; text-decoration:line-through; font-size:14px; margin-left:8px; }
+.tag {
+  display:inline-block;
+  background:var(--yellow);
+  padding:6px 9px;
+  font: bold 10px Arial,sans-serif;
+}
+.cart {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  border:0;
+  background:var(--brown);
+  color:white;
+  padding:15px 20px;
+  cursor:pointer;
+  z-index:5;
+}
+.reservations { background:#eeeef0; }
+.booking {
+  max-width:760px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.booking label { display:block; font-size:14px; margin-bottom:6px; }
+.booking input, .booking select {
+  width:100%;
+  padding:12px;
+  border:1px solid #d5d5d8;
+  background:white;
+  font:14px Arial,sans-serif;
+}
+.booking .full { grid-column:1/-1; }
+footer {
+  background:var(--brown);
+  color:var(--cream);
+  padding:35px 7%;
+  text-align:center;
+}
+footer p { font-size:12px; letter-spacing:1px; }
+@media(max-width:650px) {
+  .menu-grid,.products,.booking { grid-template-columns:1fr; }
+  .booking .full { grid-column:auto; }
+  header { justify-content:center; }
+  nav { justify-content:center; }
+  .hero { min-height:500px; }
+  .hero h2 { letter-spacing:-2px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CINEATELIER</div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Menú</a>
+    <a href="#tienda">Boutique</a>
+    <a href="#reservaciones">Reservaciones</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <span class="eyebrow">UNA EXPERIENCIA EXTRAORDINARIA</span>
+  <div class="hotel">THE GRAND<br>BUDAPEST</div>
+  <p class="subtitle">HOTEL · CINEMA · CUISINE</p>
+  <h2>CINEATELIER</h2>
+  <p>A FILM BY YOUR IMAGINATION</p>
+  <a class="btn yellow" href="#menu">ENTRAR AL MENÚ</a>
+</section>
+
+<section class="intro">
+  <div class="section-title">
+    <small>BIENVENIDOS A NUESTRO UNIVERSO</small>
+    <h2>El arte de saborear el cine</h2>
+  </div>
+  <p>
+    Cineatelier es una experiencia que une la magia del séptimo arte
+    con la gastronomía. Inspirados en escenarios simétricos, colores
+    pastel y mundos cinematográficos, creamos momentos inolvidables.
+  </p>
+  <a class="btn" href="#reservaciones">VIVIR LA EXPERIENCIA</a>
+</section>
+
+<section class="menu" id="menu">
+  <div class="section-title">
+    <small>LE MENU</small>
+    <h2>El Grand Hotel Budapest</h2>
+    <p>Una carta inspirada en la estética de Wes Anderson.</p>
+  </div>
+  <div class="menu-grid">
+    <div>
+      <h3>Entradas</h3>
+      <div class="menu-item">
+        <strong><span>Sopa Agnès</span><span>$85</span></strong>
+        <p>Sopa cremosa con hierbas aromáticas y un delicado toque de especias.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Croquetas Republicanas</span><span>$95</span></strong>
+        <p>Croquetas crujientes con salsa especial de la casa.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Ensalada Madame D.</span><span>$90</span></strong>
+        <p>Hojas frescas, frutas de temporada y vinagreta de frambuesa.</p>
+      </div>
+      <h3>Bebidas</h3>
+      <div class="menu-item">
+        <strong><span>Cóctel Grand Budapest</span><span>$95</span></strong>
+        <p>Bebida de autor con presentación inspirada en el hotel.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Refresco Alpino</span><span>$45</span></strong>
+        <p>Bebida refrescante para acompañar tu película favorita.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Platos fuertes</h3>
+      <div class="menu-item">
+        <strong><span>Filete M. Gustave</span><span>$220</span></strong>
+        <p>Filete con guarnición dorada y salsa cremosa.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Goulash del Cónsul</span><span>$185</span></strong>
+        <p>Receta reconfortante con especias y vegetales.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Pappardelle del Lobby Boy</span><span>$165</span></strong>
+        <p>Pasta fresca con salsa de setas y parmesano.</p>
+      </div>
+      <h3>Pastelería Mend'l</h3>
+      <div class="menu-item">
+        <strong><span>Courtesan au Chocolat</span><span>$85</span></strong>
+        <p>Postre de chocolate con una presentación delicada.</p>
+      </div>
+      <div class="menu-item">
+        <strong><span>Tarta Zubrowka</span><span>$75</span></strong>
+        <p>Tarta de temporada con notas dulces y frutales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shop" id="tienda">
+  <div class="section-title">
+    <small>THE CINEATELIER BOUTIQUE</small>
+    <h2>Pequeños objetos, grandes historias</h2>
+    <p>Compra nuestros favoritos con precios especiales de lanzamiento.</p>
+  </div>
+
+  <div class="products">
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80" alt="Libreta de inspiración cinematográfica">
+      <span class="tag">20% DE DESCUENTO</span>
+      <h3>Diario del Director</h3>
+      <p>Libreta de tapa dura para escribir ideas, guiones y recuerdos.
+      Diseño de inspiración vintage, ideal para amantes del cine.</p>
+      <p><span class="price">$199.90</span><span class="old-price">$249.90</span></p>
+      <button class="btn" onclick="addToCart('Diario del Director',199.90)">AÑADIR AL CARRITO</button>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80" alt="Set artístico de colores y pinceles">
+      <span class="tag">EDICIÓN ESPECIAL</span>
+      <h3>Kit Atelier Creativo</h3>
+      <p>Set creativo para dibujar, pintar y diseñar. Una opción especial
+      para quienes disfrutan crear sus propios universos visuales.</p>
+      <p><span class="price">$299.90</span></p>
+      <button class="btn" onclick="addToCart('Kit Atelier Creativo',299.90)">AÑADIR AL CARRITO</button>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80" alt="Lámina artística decorativa">
+      <span class="tag">PRECIO DE LANZAMIENTO</span>
+      <h3>Lámina Cinematográfica</h3>
+      <p>Ilustración decorativa para transformar tu espacio con una
+      estética artística, nostálgica y llena de personalidad.</p>
+      <p><span class="price">$149.90</span><span class="old-price">$179.90</span></p>
+      <button class="btn" onclick="addToCart('Lámina Cinematográfica',149.90)">AÑADIR AL CARRITO</button>
+    </article>
+  </div>
+  <p style="text-align:center;font-size:12px;margin-top:25px">
+    Promociones ilustrativas para el proyecto escolar. No representan
+    inventario ni descuentos de una tienda real.
+  </p>
+</section>
+
+<section class="reservations" id="reservaciones">
+  <div class="section-title">
+    <small>YOUR TABLE IS WAITING</small>
+    <h2>Reservaciones</h2>
+    <p>Una velada diferente comienza aquí.</p>
+  </div>
+  <form class="booking" id="booking">
+    <div>
+      <label for="name">Nombre</label>
+      <input id="name" required placeholder="Tu nombre">
+    </div>
+    <div>
+      <label for="email">Correo electrónico</label>
+      <input id="email" type="email" required placeholder="tu@email.com">
+    </div>
+    <div>
+      <label for="date">Fecha</label>
+      <input id="date" type="date" required>
+    </div>
+    <div>
+      <label for="time">Horario</label>
+      <select id="time">
+        <option>13:00 - Comida</option>
+        <option>15:00 - Comida</option>
+        <option>19:00 - Cena</option>
+        <option>21:00 - Cena</option>
+      </select>
+    </div>
+    <div>
+      <label for="people">Número de personas</label>
+      <select id="people">
+        <option>1 persona</option>
+        <option>2 personas</option>
+        <option>3–4 personas</option>
+        <option>5–10 personas</option>
+      </select>
+    </div>
+    <div>
+      <label for="zone">Experiencia</label>
+      <select id="zone">
+        <option>Sala Rosa Pastel</option>
+        <option>Sala Arte Moderno</option>
+        <option>Sala Cine Noir</option>
+        <option>Sala Terraza</option>
+      </select>
+    </div>
+    <div class="full">
+      <button class="btn" type="submit">SOLICITAR RESERVACIÓN</button>
+    </div>
+  </form>
+  <p id="booking-message" style="text-align:center"></p>
+</section>
+</main>
+
+<button class="cart" onclick="showCart()">Carrito (<span id="count">0</span>)</button>
+
+<footer>
+  <div class="logo" style="color:#fff15c">CINEATELIER</div>
+  <p>UNA EXPERIENCIA CULINARIA Y CINEMATOGRÁFICA</p>
+  <p>Proyecto académico · Habilidades Digitales para Emprendedoras</p>
+  <p>© 2026 Cineatelier</p>
+</footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  document.getElementById('count').textContent = cart.length;
+  alert(name + ' se añadió al carrito de demostración.');
+}
+
+function showCart() {
+  if (!cart.length) {
+    alert('Tu carrito está vacío.');
+    return;
+  }
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const items = cart.map(item => item.name + ' — $' + item.price.toFixed(2)).join('\n');
+  alert('TU CARRITO\n\n' + items + '\n\nTotal: $' + total.toFixed(2) +
+  '\n\nDemostración escolar: no se procesa ningún pago.');
+}
+
+document.getElementById('booking').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('booking-message').textContent =
+    '¡Gracias, ' + document.getElementById('name').value +
+    '! Tu solicitud de reservación está preparada como demostración. ' +
+    'No se ha enviado a un restaurante real.';
+});
+</script>
+
+</body>
+</html>
